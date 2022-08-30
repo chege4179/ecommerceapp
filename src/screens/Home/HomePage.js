@@ -63,7 +63,6 @@ const HomePage = ({ navigation }) => {
         axios.get(`${BaseURL}/product/all`)
             .then((res) => {
                 setProducts(res.data.products)
-
             })
             .catch((err) => {
                 console.log(err)
@@ -78,61 +77,7 @@ const HomePage = ({ navigation }) => {
         return GetAllProducts
     },[])
 
-    const categories = [
-        {
-            id:13,
-            name:'Shops',
-        },
-        {
-            id:6,
-            name:'Fashion'
-        },
-        {
-            id:1,
-            name:'Health and Beauty'
-        },
-        {
-            id:2,
-            name:'Home and Office'
-        },
-        {
-            id:3,
-            name:'Phone and Tablets'
-        },
-        {
-            id:4,
-            name:'Computing'
-        },
-        {
-            id:5,
-            name:'Electronics'
-        },
 
-        {
-            id:7,
-            name:'Food'
-        },
-        {
-            id:8,
-            name:'Real Estate'
-        },
-        {
-            id:9,
-            name:'Gaming'
-        },
-        {
-            id:10,
-            name:'Customer Services'
-        },
-        {
-            id:11,
-            name:'Baby Products'
-        },
-        {
-            id:12,
-            name:'Sporting Goods'
-        }
-    ]
     const SearchProducts  =(text) => {
 
     }
@@ -154,18 +99,14 @@ const HomePage = ({ navigation }) => {
             {Loader &&(<ActivityIndicator size='large' animating={Loader} color="#0000ff"
                                           style={styles.loading}/>)}
             <View style={styles.container}>
-                {products.length === 0 &&(<Text style={{ marginTop:400}}>Please check your Internet connection</Text>)}
+                {products.length === 0 &&(<ActivityIndicator size='large' animating={Loader} color="#0000ff"
+                                                             style={styles.loading}/>)}
                 {
-                    products.map((product) => {
+                    products.map((product,index) => {
                         return(
                             <Product
-                                key={product._id}
-                                name={product.name}
-                                seller={product.username}
-                                price={product.price}
-                                imageUrl={product.imageUrl}
-                                description={product.description}
-                                id={product._id} product={product}
+                                key={index}
+                                product={product}
                                 isWishListScreen={false}
                             />
                         )

@@ -9,12 +9,12 @@ import { AsyncStorage } from "react-native";
 import axios from "axios";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-const Product = ({ imageUrl,name,price,description,id,product,isWishListScreen} ) => {
+const Product = ({ product,isWishListScreen } ) => {
 
     const navigation = useNavigation();
 
     const GoToProductScreen = () => {
-        navigation.navigate('Product',{ imageUrl,name,price,description,id })
+        navigation.navigate('Product',{ id: product._id })
     }
     const addToWishList = () => {
         AsyncStorage.getItem('WishList',(err,data) => {
@@ -57,12 +57,12 @@ const Product = ({ imageUrl,name,price,description,id,product,isWishListScreen} 
 
 
             <TouchableOpacity style={styles.container} onPress={GoToProductScreen}>
-                <Image style={styles.image} source={{uri:`${imageUrl}`}}/>
+                <Image style={styles.image} source={{uri: product.images[0].url }}/>
             </TouchableOpacity>
             <View style={styles.info}>
                 <View>
-                    <Text style={styles.text}>{truncate(name,17)}</Text>
-                    <Text style={styles.text}>Ksh {price} /=</Text>
+                    <Text style={styles.text}>{truncate(product.name,17)}</Text>
+                    <Text style={styles.text}>Ksh {product.price} /=</Text>
                 </View>
                 {
                     isWishListScreen ? (

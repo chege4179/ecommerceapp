@@ -8,6 +8,7 @@ import CartScreen from "../Cart/CartScreen";
 import CheckOutScreen from "../Cart/CheckOutScreen";
 
 const Stack = createStackNavigator()
+
 const HomeScreen = () => {
     return (
         <Stack.Navigator>
@@ -20,13 +21,5 @@ const HomeScreen = () => {
         </Stack.Navigator>
     );
 };
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-    },
-    searchBar:{
-        height:55
-    }
-})
+
 export default HomeScreen;

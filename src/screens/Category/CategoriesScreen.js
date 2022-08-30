@@ -10,7 +10,7 @@ const CategoriesScreen = () => {
     const cart = useSelector(SelectCart)
     return (
         <View style={styles.container}>
-            <PlayerWidget/>
+            {/*<PlayerWidget/>*/}
             <Text>Categories Screen</Text>
         </View>
     );
